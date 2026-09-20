@@ -46,8 +46,9 @@ function doPost(e) {
       widths.forEach((w, i) => sheet.setColumnWidth(i + 1, w));
     }
 
-    // Append the data row
-    sheet.appendRow(row);
+    // Generate S.No from the next available data row.
+    const rowToAppend = [Math.max(1, sheet.getLastRow()), ...row];
+    sheet.appendRow(rowToAppend);
 
     // Alternate row shading
     const lastRow = sheet.getLastRow();

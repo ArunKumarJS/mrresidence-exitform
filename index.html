@@ -79,7 +79,6 @@
     <div class="section-header"><div class="dot"></div><h2>Tenant Details</h2></div>
     <div class="fields">
       <div class="field-row">
-        <div class="field"><label>S.No <span class="required">*</span></label><input type="text" id="sno" placeholder="e.g. 001"></div>
         <div class="field"><label>Tenant Name <span class="required">*</span></label><input type="text" id="name" placeholder="Full name"></div>
       </div>
       <div class="field-row">
@@ -150,7 +149,7 @@
   }
 
   function clearForm() {
-    ['sno','name','dateAdm','dateExit','roomNo','phone',
+    ['name','dateAdm','dateExit','roomNo','phone',
      'advPaid','advReturned','deductionReason','damageReason','damageAmt','remarks']
       .forEach(id => document.getElementById(id).value = '');
     document.getElementById('keyHanded').value = '';
@@ -161,14 +160,14 @@
     if (SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL') {
       showToast('⚠ Please set your Apps Script URL first (see README).', 'err'); return;
     }
-    if (!v('sno') || !v('name') || !v('dateAdm') || !v('dateExit') || !v('advPaid')) {
+    if (!v('name') || !v('dateAdm') || !v('dateExit') || !v('advPaid')) {
       showToast('⚠ Please fill all required fields.', 'err'); return;
     }
     const btn = document.getElementById('submitBtn');
     btn.disabled = true; btn.textContent = 'Saving…';
 
     const row = [
-      v('sno'), v('name'), v('roomNo'), v('phone'),
+      v('name'), v('roomNo'), v('phone'),
       v('dateAdm'), v('dateExit'),
       v('advPaid'), v('advReturned'),
       v('deductionReason'), v('damageReason'), v('damageAmt'),
